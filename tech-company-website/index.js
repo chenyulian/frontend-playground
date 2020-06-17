@@ -118,6 +118,11 @@ const scroll = new SmoothScroll('nav a[href*="#"], .scrollToTop a[href*="#"]', {
     header: "header",
     offset: 80
 });
+document.addEventListener("scrollStart", () => {
+    if(headerEl.classList.contains("open")) {
+        headerEl.classList.remove("open");
+    }
+});
 
 const exploreBtnEls = document.querySelectorAll(".explore-btn");
 exploreBtnEls.forEach(exploreBtnEl => {
@@ -125,3 +130,11 @@ exploreBtnEls.forEach(exploreBtnEl => {
         scroll.animateScroll(document.querySelector("#about-us"));
     });
 });
+
+// 展开和收起header
+const burgerEl = document.querySelector(".burger");
+burgerEl.addEventListener("click", () => {
+    headerEl.classList.toggle("open");
+});
+
+
